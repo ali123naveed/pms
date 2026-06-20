@@ -17,11 +17,9 @@ Route::get('/', function () {
 })->name('home');
     
     Route::middleware(['auth'])->group(function () {
-        Route::get('dashboard', function () {
-            return Inertia::render('dashboard', [
-                'posts' => Post::latest()->get(),
-            ]);
-            })->name('dashboard');
+Route::get('dashboard', function () {
+    return redirect()->route('posts.index');
+})->name('dashboard');
 
         Route::get('post/create', function () {
             return redirect()->route('posts.create');
